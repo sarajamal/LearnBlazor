@@ -1,9 +1,24 @@
 ﻿@page "/LearnBlazor/ParentComponent"
 
 <h3>ParentChiled</h3>
-<_ChiledComponent Title="This Title Pass From parent Component ">
+<CascadingValue Value="@MessagForGranChiled">
+<_ChiledComponent OnButtonClick="ShowMessage" Title="This Title Pass From parent Component ">
+
+    <ChildSomeContent> There is Some Text Between Tags !!!</ChildSomeContent>
+    <ChildContent>
+        this is ChildContent !!!
+    </ChildContent>
 
 </_ChiledComponent>
-@code {
+</CascadingValue>
+@Massege
 
+@code {
+    public string Massege = "";
+
+    private string MessagForGranChiled = "This Message is Pass from Parent Component  To GrantChiled";
+    private void ShowMessage()
+    {
+        Massege = "this Button is Clcked";
+    }
 }
