@@ -3,10 +3,10 @@
     public class Product
     {
         public int Id { get; set; }
-        public double price { get; set; }
+        public double Price { get; set; }
         public string Name { get; set; }
-        public bool isActive { get; set; }
-        public IEnumerable<Product__prop> ProductProperies { get; set; }
+        public bool IsActive { get; set; }
+        public IEnumerable<ProductPropareties> productPropareties { get; set; }
 
     }
 }

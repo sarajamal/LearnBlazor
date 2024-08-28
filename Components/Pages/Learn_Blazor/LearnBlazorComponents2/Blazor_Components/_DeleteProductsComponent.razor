@@ -1,0 +1,15 @@
+﻿<input type="button" class="btn btn-danger" style="width:100px;" value="Delete - @ProductId"
+       @onclick="(args)=>DeleteProduct(args,ProductId)">
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+    [Parameter]
+    public EventCallback<int> OnDeleteProduct { get; set; }
+
+    private async Task DeleteProduct(MouseEventArgs args , int ID)
+    {
+        await OnDeleteProduct.InvokeAsync(ProductId);
+    }
+
+}

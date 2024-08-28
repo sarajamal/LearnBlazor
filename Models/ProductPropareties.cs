@@ -1,6 +1,6 @@
 ﻿namespace LearnBlazor.Models
 {
-    public class Product__prop
+    public class ProductPropareties
     {
         public int Id { get; set; }
         public string Key { get; set; }
