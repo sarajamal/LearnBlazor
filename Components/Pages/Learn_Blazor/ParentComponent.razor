@@ -2,7 +2,7 @@
 
 <h3>ParentChiled</h3>
 <CascadingValue Value="@MessagForGranChiled">
-<_ChiledComponent OnButtonClick="ShowMessage" Title="This Title Pass From parent Component ">
+    <_ChiledComponent @ref="ChiledVom" OnButtonClick="ShowMessage" Title="This Title Pass From parent Component ">
 
     <ChildSomeContent> There is Some Text Between Tags !!!</ChildSomeContent>
     <ChildContent>
@@ -13,7 +13,12 @@
 </CascadingValue>
 @Massege
 
+<div class="row">
+    <button class="btn btn-success" @onclick="()=> ChiledVom.ToastrSuccess()"> Show Toastr ! </button>
+</div>
+
 @code {
+    public _ChiledComponent ChiledVom; 
     public string Massege = "";
 
     private string MessagForGranChiled = "This Message is Pass from Parent Component  To GrantChiled";

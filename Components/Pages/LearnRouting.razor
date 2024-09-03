@@ -1,0 +1,21 @@
+﻿@page "/LearnRouting"
+@page "/LearnRouting/catch-all/{*Parameters}"
+@page "/LearnRouting/{param1:int}"
+@page "/LearnRouting/{param1:int}/{param2}"
+
+<h3>LearnRouting</h3>
+
+<p>Param1 : @param1</p>
+<p>Param2 : @param2</p>
+<p>
+    Page Parameters : @Parameters
+</p>
+
+@code {
+    [Parameter]
+    public int param1 { get; set; } 
+    [Parameter]
+    public string param2 { get; set; } = "";
+    [Parameter]
+    public string Parameters { get; set; } = "";
+}

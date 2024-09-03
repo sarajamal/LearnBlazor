@@ -1,4 +1,6 @@
-﻿<div>
+﻿@inject IJSRuntime _ijsRunTime
+
+<div>
     <div class="alert alert-info">
         @Title
     </div>
@@ -31,6 +33,15 @@
 
     [Parameter]
     public EventCallback OnButtonClick { get; set; }
+
+
+    public async Task ToastrSuccess()
+    {
+        //showToastr اسم الفنكشن اللي فيها الرسالة - success الرسالة , Success Notification الرسالة اللي راح تظهر
+        // await _ijsRunTime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+
+        await _ijsRunTime.ToastrSuccess("Success Notification");
+    }
 
 }
 

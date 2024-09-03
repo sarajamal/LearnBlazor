@@ -1,0 +1,67 @@
+﻿@page "/blazorjs"
+@inject IJSRuntime _ijsRunTime
+
+<h3>BlazorJS</h3>
+
+<div class="row">
+    <button class="btn btn-dark" @onclick="TestConfirmMessage">
+        Test Confirm Button
+    </button>
+</div>
+
+<div class="row">
+    @if (ConfirmResult)
+    {
+        <p>Confirm Has Been Done!!</p>
+    }
+    else
+    {
+        <p>Pending Confirm</p>
+    }
+</div>
+
+<div class="row">
+    <button class="btn btn-success m-2"style="width:200px;" @onclick="ToastrSuccess"> Toastr Success  </button>
+    <button class="btn btn-danger m-2" style="width:200px;" @onclick="ToastrErrors">Toastr Failure</button>
+</div>
+<div class="row">
+    <button class="btn btn-success m-2" style="width:200px;" @onclick="SweetAleartSuccess"> Sweet Aleart Success   </button>
+    <button class="btn btn-danger m-2" style="width:200px;" @onclick="SweetAleartSuccessErrors">Sweet Aleart Error</button>
+</div>
+
+
+@code {
+    private string ConfirmMessage = "Are you sure you want to click here?";
+    private bool ConfirmResult { get; set; }
+
+    public async Task TestConfirmMessage()
+    {
+        ConfirmResult = await _ijsRunTime.InvokeAsync<bool>("confirm", ConfirmMessage);
+    }
+
+    public async Task ToastrSuccess()
+    {
+        //showToastr اسم الفنكشن اللي فيها الرسالة - success الرسالة , Success Notification الرسالة اللي راح تظهر 
+        // await _ijsRunTime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+
+        await _ijsRunTime.ToastrSuccess("Success Notification");
+    }
+    public async Task ToastrErrors()
+    {
+        // await _ijsRunTime.InvokeVoidAsync("showToastr", "error", "Error Notification");
+
+        await _ijsRunTime.ToastrEorros("Error Notification");
+
+    }
+    //---------------------------------------------------------------------------------------------------------
+    public async Task SweetAleartSuccess()
+    {
+        await _ijsRunTime.InvokeVoidAsync("showSWT", "success", "Success !!!");
+    }
+
+    public async Task SweetAleartSuccessErrors()
+    {
+        await _ijsRunTime.InvokeVoidAsync("showSWT", "error", "Failed !!");
+    }
+}
+
